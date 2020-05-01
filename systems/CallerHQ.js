@@ -78,6 +78,15 @@ class CallerHQ {
         var resp = await this.postRequest('/incidents',body);
         callback(resp);
     };
+    async createIncidentUpdate(incident_id,incident_status,message = "Default message",callback) {
+        var body = {
+            status: incident_status,
+            message: message
+        };
+
+        var resp = await this.postRequest('/incidents/'+incident_id+'/updates',body);
+        callback(resp);
+    };
 
     //PUT METHOD
     async updateComponent(component_id,component_status,callback) {
@@ -98,7 +107,7 @@ class CallerHQ {
         };
 
         var resp = await this.putRequest('/incidents/'+incident_id,body);
-        callback(this.parser.parse(resp));
+        callback(resp);
     };
 }
 

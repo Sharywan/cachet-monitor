@@ -39,6 +39,8 @@ config.components.forEach((component, index) => {
 
     var interval = (component.interval) * 1000;
     var counter = 0;
+    eval('var incident_'+component.component_id+' = undefined;');
+
 
     setInterval(() => {
         if (component.type === "ping") {
@@ -60,7 +62,7 @@ config.components.forEach((component, index) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
                             caller.createIncident("ERREUR HOST UNREACHBLE", "L'hôte distant n'a pas été atteint", 1, 1, component.component_id, 3, (response) => {
-                                 eval('var incident_'+component.component_id+' = '+response.data.id+';');
+                                 eval('incident_'+component.component_id+' = '+response.data.id+';');
                                 console.log('INCIDENT '+response.data.id+" HAS BEEN CREATED");
                                 //console.log(eval('incident_'+component.component_id));
                             });
@@ -71,9 +73,12 @@ config.components.forEach((component, index) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
                             if (isIncident !== undefined) {
-                                caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
+                               /* caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
                                    console.log("PASSED UPDATE INCIDENT ");
-                                });
+                                });*/
+                               caller.createIncidentUpdate(isIncident,2,"Panne Majeur", (response) => {
+                                   console.log("PASSED UPDATE INCIDENT ");
+                               });
                             } else {
                                 caller.createIncident("ERREUR HOST UNREACHBLE", "L'hôte distant n'a pas été atteint", 1, 1, component.component_id, 4, (response) => {
                                     eval('var incident_'+component.component_id+' = '+response.data.id+';');
