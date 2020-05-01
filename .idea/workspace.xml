@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e101733-2cc4-46da-a589-c0c1aef3cce0" name="Default Changelist" comment="" />
+    <list default="true" id="6e101733-2cc4-46da-a589-c0c1aef3cce0" name="Default Changelist" comment="ZAZZZZZ">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +31,10 @@
   <component name="FavoritesManager">
     <favorites_list name="status_monitor" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
   <component name="ProjectId" id="1b2uVUl2SoyX8xZNdTmnRFcwFhz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,7 +48,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunManager" selected="Node.js.AGENT">
     <configuration name="AGENT" type="NodeJSConfigurationType" path-to-js-file="agent.js" working-dir="$PROJECT_DIR$">
@@ -73,21 +79,53 @@
       <workItem from="1588083077994" duration="7588000" />
       <workItem from="1588273724289" duration="8201000" />
       <workItem from="1588338882629" duration="2194000" />
+      <workItem from="1588341953258" duration="108000" />
+      <workItem from="1588342071914" duration="320000" />
+      <workItem from="1588342407527" duration="44000" />
     </task>
+    <task id="LOCAL-00001" summary="ZAZZZZZ">
+      <created>1588342184140</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588342184140</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ZAZZZZZ" />
+    <option name="LAST_COMMIT_MESSAGE" value="ZAZZZZZ" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587843037573">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1587843037573" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1587843036687">
+    <state x="573" y="29" width="1228" height="982" key="CommitChangelistDialog2" timestamp="1588342430914">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1587843036687" />
+    <state x="573" y="29" width="1228" height="982" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588342430914" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588342058538">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588342058538" />
     <state width="1877" height="272" key="GridCell.Tab.0.bottom" timestamp="1588341032095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -104,10 +142,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="272" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588341032095" />
-    <state x="679" y="110" key="SettingsEditor" timestamp="1587846131272">
+    <state x="679" y="110" key="SettingsEditor" timestamp="1588342059715">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="679" y="110" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1587846131272" />
+    <state x="679" y="110" key="SettingsEditor/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588342059715" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1588342347085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588342347085" />
+    <state x="762" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588342290513">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="762" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1600.860@0.0.1920.1040" timestamp="1588342290513" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1587909828443">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
