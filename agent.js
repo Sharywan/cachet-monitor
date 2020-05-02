@@ -14,15 +14,12 @@ const config = parser.readConfig();
 //Init caller with parsed configuration url and token
 const caller = new CallerHQ(config.api_url,config.token,config.app_name);
 
-
 caller.ping((response) => {
    console.log(response);
 });
 caller.version((response) => {
     console.log(response);
 });
-
-
 
 // setInterval(() => {
 //     console.log('lol');
@@ -35,6 +32,14 @@ caller.version((response) => {
 
 config.components.forEach((component, index) => {
 
+    var interval = (component.interval) * 1000;
+    var counter = 0;
+   // var IsIncident = eval('var incident_'+component.component_id+' = undefined;');
+
+    eval('var incident_'+component.component_id+' = undefined;');
+
+    setInterval(() => {
+        var IsIncident = eval('incident_'+component.component_id);
 
 
     var interval = (component.interval) * 1000;
@@ -47,6 +52,14 @@ config.components.forEach((component, index) => {
             if (component.port !== "") {
                 tcpp.probe(component.adress, component.port, function(err, available) {
                     if (available) {
+                        counter = 0;
+                        if (IsIncident !== undefined) {
+                            caller.createIncidentUpdate(IsIncident,4,"Corrigé", (response) => {
+                                console.log("UPDATE INCIDENT to RESOLVED");
+                                eval('incident_'+component.component_id+' = undefined;');
+                            });
+                        }
+                        console.log("ICI PD");
                         tcpp.ping({ address: component.adress,port: component.port }, function(err, data) {
                           console.log('true');
                         });
@@ -68,6 +81,14 @@ config.components.forEach((component, index) => {
                             });
                         } else if (counter == (component.retries + 10)) {
                             console.log ("PASSAGE EN MAJEUR "+ component.name);
+                            caller.updateComponent(component.component_id, 4, (response) => {
+                                console.log('PASSAGE EFFECTUER');
+                            });
+                            if (IsIncident !== undefined) {
+                               /* caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
+                                   console.log("PASSED UPDATE INCIDENT ");
+                                });*/
+                               caller.createIncidentUpdate(IsIncident,2,"Panne Majeur", (response) => {
                             var isIncident = eval('incident_'+component.component_id);
                             caller.updateComponent(component.component_id, 4, (response) => {
                                 console.log('PASSAGE EFFECTUER');
@@ -81,6 +102,7 @@ config.components.forEach((component, index) => {
                                });
                             } else {
                                 caller.createIncident("ERREUR HOST UNREACHBLE", "L'hôte distant n'a pas été atteint", 1, 1, component.component_id, 4, (response) => {
+                                    eval('incident_'+component.component_id+' = '+response.data.id+';');
                                     eval('var incident_'+component.component_id+' = '+response.data.id+';');
                                     console.log('INCIDENT '+response.data.id+" HAS BEEN CREATED");
                                 });
@@ -107,10 +129,6 @@ config.components.forEach((component, index) => {
         counter++;
         console.log('TOUR NUMERO '+counter + " INDEX "+index);
     }, interval);
-
-
-
-
 });
 
 
