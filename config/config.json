@@ -15,11 +15,16 @@
     	{
     		"name" : "TeamSpeak",
     		"type" : "ping",
+<<<<<<< HEAD
     		"adress" : "46.105.120.87",
+=======
+    		"adress" : "46.105.120.86",
+>>>>>>> a46c7959da4224029355f7dbcbe8f49e605c8a3b
     		"port" : "10011",
     		"interval" : "3",
     		"retries" : 1,
     		"component_id" : "6"
+<<<<<<< HEAD
     	},
 		{
 			"name" : "TestMachine",
@@ -30,5 +35,8 @@
 			"retries" : 1,
 			"component_id" : "3"
 		}
+=======
+    	}
+>>>>>>> a46c7959da4224029355f7dbcbe8f49e605c8a3b
     ]
 }
