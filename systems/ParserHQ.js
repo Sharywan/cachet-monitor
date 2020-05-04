@@ -11,7 +11,6 @@ class ParserHQ {
         var result = JSON.parse(json_data);
 
         return result;
-
     };
 
     readConfig() {

@@ -5,7 +5,7 @@
     "components" : [
     	{
     		"name" : "Site vitrine",
-    		"type" : "ping",
+    		"type" : "",
     		"adress" : "46.105.120.87",
     		"port" : "",
     		"interval" : "3",
@@ -14,29 +14,21 @@
     	},
     	{
     		"name" : "TeamSpeak",
-    		"type" : "ping",
-<<<<<<< HEAD
+    		"type" : "",
     		"adress" : "46.105.120.87",
-=======
-    		"adress" : "46.105.120.86",
->>>>>>> a46c7959da4224029355f7dbcbe8f49e605c8a3b
     		"port" : "10011",
     		"interval" : "3",
     		"retries" : 1,
     		"component_id" : "6"
-<<<<<<< HEAD
     	},
 		{
 			"name" : "TestMachine",
-			"type" : "ping",
-			"adress" : "54.37.159.236",
+			"type" : "http",
+			"adress" : "pcuspace.ovh",
 			"port" : "80",
 			"interval" : "3",
 			"retries" : 1,
 			"component_id" : "3"
 		}
-=======
-    	}
->>>>>>> a46c7959da4224029355f7dbcbe8f49e605c8a3b
     ]
 }
