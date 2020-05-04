@@ -31,7 +31,6 @@ caller.version((response) => {
 
 
 config.components.forEach((component, index) => {
-
     var interval = (component.interval) * 1000;
     var counter = 0;
     var response;

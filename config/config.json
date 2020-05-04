@@ -21,14 +21,14 @@
     		"retries" : 1,
     		"component_id" : "6"
     	},
-		{
-			"name" : "TestMachine",
-			"type" : "http",
-			"adress" : "pcuspace.ovh",
-			"port" : "80",
-			"interval" : "3",
-			"retries" : 1,
-			"component_id" : "3"
-		}
+      {
+        "name" : "TestMachine",
+        "type" : "http",
+        "adress" : "pcuspace.ovh",
+        "port" : "80",
+        "interval" : "3",
+        "retries" : 1,
+        "component_id" : "3"
+      }
     ]
 }
