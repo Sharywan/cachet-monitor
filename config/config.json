@@ -5,7 +5,7 @@
     "components" : [
     	{
     		"name" : "Site vitrine",
-    		"type" : "ping",
+    		"type" : "",
     		"adress" : "46.105.120.87",
     		"port" : "",
     		"interval" : "3",
@@ -14,21 +14,21 @@
     	},
     	{
     		"name" : "TeamSpeak",
-    		"type" : "ping",
+    		"type" : "",
     		"adress" : "46.105.120.87",
     		"port" : "10011",
     		"interval" : "3",
     		"retries" : 1,
     		"component_id" : "6"
     	},
-	{
-		"name" : "TestMachine",
-		"type" : "ping",
-		"adress" : "54.37.159.236",
-		"port" : "80",
-		"interval" : "3",
-		"retries" : 1,
-		"component_id" : "3"
-	}
+		{
+			"name" : "TestMachine",
+			"type" : "ping",
+			"adress" : "54.37.159.237",
+			"port" : "",
+			"interval" : "3",
+			"retries" : 1,
+			"component_id" : "3"
+		}
     ]
 }
