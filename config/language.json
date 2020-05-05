@@ -1,0 +1,12 @@
+{
+  "active_language": "en",
+
+  "en": {
+    "resolved": "Resolved",
+    "performance_problem": "Performance problem",
+    "partial_failure": "Partial failure",
+    "major_outage": "Major outage",
+    "incident_title": "HOST UNREACHABLE",
+    "incident_message": "THE HOST IS UNREACHABLE"
+  }
+}

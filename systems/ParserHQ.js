@@ -1,6 +1,6 @@
 class ParserHQ {
     constructor() {
-        this.fs = require('fs');
+        this.fs = require("fs-extra");
         console.log ("[ParserHQ] Initialised !");
     }
 
@@ -19,14 +19,25 @@ class ParserHQ {
         return JSON.parse(config);
     };
 
-    writeCache(json_data) {
-        var json_parsed = JSON.stringify(json_data);
-        this.fs.writeFile('cache.json', json_parsed, (error) => {
-            if (error) {
-                console.log(error);
-            }
-        });
+    readLanguage() {
+        var language = this.fs.readFileSync('config/language.json');
+
+        return JSON.parse(language);
     };
+
+    async updateCache() {
+        if (fs.existsSync('cache.json')) {
+            console.log('true');
+            return;
+        }
+        try {
+            await this.fs.writeFile('cache.json', JSON.stringify())
+            console.log('success!')
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
 }
 
 module.exports = ParserHQ;
