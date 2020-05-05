@@ -37,6 +37,14 @@ caller.version((response) => {
 
 
 
+config.components.forEach((component, index) => {
+
+    var session = ping.createSession();
+    var interval = (component.interval) * 1000;
+    var counter = 0;
+    var response;
+   // var IsIncident = eval('var incident_'+component.component_id+' = undefined;');
+
 /*icmp.ping("95.177.35.5", 3000)
     .then(obj => {
         console.log(obj);
@@ -47,18 +55,7 @@ caller.version((response) => {
         }
     })
     .catch(err => console.log(err));*/
-
-
-config.components.forEach((component, index) => {
-
-    var session = ping.createSession();
-    var interval = (component.interval) * 1000;
-    var counter = 0;
-    var response;
-   // var IsIncident = eval('var incident_'+component.component_id+' = undefined;');
-
-    eval('var incident_'+component.component_id+' = undefined;');
-
+  
     setInterval(() => {
         var IsIncident = eval('incident_'+component.component_id);
         if (component.type === "ping") {
