@@ -5,30 +5,57 @@
     "components" : [
     	{
     		"name" : "Site vitrine",
-    		"type" : "",
-    		"adress" : "46.105.120.87",
+    		"type" : "http",
+    		"adress" : "https://arma3frontiere.fr",
     		"port" : "",
     		"interval" : "3",
-    		"retries" : 1,
+    		"retries" : 3,
     		"component_id" : "2"
     	},
     	{
-    		"name" : "TeamSpeak",
-    		"type" : "",
-    		"adress" : "46.105.120.87",
-    		"port" : "10011",
+    		"name" : "Dash",
+    		"type" : "http",
+    		"adress" : "https://dash.arma3frontiere.fr",
+    		"port" : "",
     		"interval" : "3",
-    		"retries" : 1,
-    		"component_id" : "6"
+    		"retries" : 3,
+    		"component_id" : "3"
     	},
 		{
-			"name" : "TestMachine",
-			"type" : "ping",
-			"adress" : "54.37.159.237",
+			"name" : "Panel Dev",
+			"type" : "http",
+			"adress" : "https://dev.arma3frontiere.fr",
 			"port" : "",
 			"interval" : "3",
-			"retries" : 1,
-			"component_id" : "3"
+			"retries" : 5,
+			"component_id" : "4"
+		},
+		{
+			"name" : "Teamspeak",
+			"type" : "ping",
+			"adress" : "46.105.120.87",
+			"port" : "10011",
+			"interval" : "3",
+			"retries" : 2,
+			"component_id" : "6"
+		},
+		{
+			"name" : "Serveur arma 3",
+			"type" : "ping",
+			"adress" : "46.105.120.87",
+			"port" : "2302",
+			"interval" : "3",
+			"retries" : 4,
+			"component_id" : "7"
+		},
+		{
+			"name" : "Machine principal",
+			"type" : "ping",
+			"adress" : "46.105.120.87",
+			"port" : "",
+			"interval" : "3",
+			"retries" : 4,
+			"component_id" : "8"
 		}
     ]
 }
