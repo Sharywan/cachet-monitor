@@ -6,21 +6,26 @@ const CallerHQ = require("./systems/CallerHQ.js");
 const http = require('node-http-ping'); //Web http pinger
 const tcpp = require('tcp-ping'); //IP Port pinger
 const icmp = require('icmp'); //Ip pinger
-const ping = require ("net-ping");
+const ping = require("net-ping");
 
 //Init parser and load configuration
 const parser = new ParserHQ();
 const config = parser.readConfig();
+const language = parser.readLanguage();
+const languageActive = language.active_language;
+const trans = eval('language.'+languageActive);
 
 //Init caller with parsed configuration url and token
 const caller = new CallerHQ(config.api_url,config.token,config.app_name);
 
-caller.ping((response) => {
+
+
+/*caller.ping((response) => {
    console.log(response);
 });
 caller.version((response) => {
     console.log(response);
-});
+});*/
 
 // setInterval(() => {
 //     console.log('lol');
@@ -44,7 +49,6 @@ caller.version((response) => {
     .catch(err => console.log(err));*/
 
 
-
 config.components.forEach((component, index) => {
 
     var session = ping.createSession();
@@ -63,19 +67,19 @@ config.components.forEach((component, index) => {
                     if (available) {
                         counter = 0;
                         if (IsIncident !== undefined) {
-                            caller.createIncidentUpdate(IsIncident,4,"Corrigé", (response) => {
+                            caller.createIncidentUpdate(IsIncident,4,trans.resolved, (response) => {
                                 console.log("UPDATE INCIDENT to RESOLVED");
                                 eval('incident_'+component.component_id+' = undefined;');
                             });
                         }
                     } else {
                         if (counter == component.retries) {
-                            console.log("PASSAGE EN PERF " + component.name);
+                            console.log(trans.performance_problem + component.name);
                             caller.updateComponent(component.component_id, 2, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
                         } else if (counter == (component.retries + 5)) {
-                            console.log("PASSAGE EN MINEUR " + component.name);
+                            console.log(trans.partial_failure + component.name);
                             caller.updateComponent(component.component_id, 3, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
@@ -85,7 +89,7 @@ config.components.forEach((component, index) => {
                                 //console.log(eval('incident_'+component.component_id));
                             });
                         } else if (counter == (component.retries + 10)) {
-                            console.log ("PASSAGE EN MAJEUR "+ component.name);
+                            console.log (trans.major_outage+ component.name);
                             caller.updateComponent(component.component_id, 4, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
@@ -93,7 +97,7 @@ config.components.forEach((component, index) => {
                                /* caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
                                    console.log("PASSED UPDATE INCIDENT ");
                                 });*/
-                               caller.createIncidentUpdate(IsIncident,2,"Panne Majeur", (response) => {
+                               caller.createIncidentUpdate(IsIncident,2,trans.major_outage, (response) => {
                                    console.log("PASSED UPDATE INCIDENT ");
                                });
                             } else {
@@ -109,12 +113,12 @@ config.components.forEach((component, index) => {
                 session.pingHost (component.adress, function (error, target) {
                     if (error) {
                         if (counter == component.retries) {
-                            console.log("PASSAGE EN PERF " + component.name);
+                            console.log(trans.performance_problem + component.name);
                             caller.updateComponent(component.component_id, 2, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
                         } else if (counter == (component.retries + 5)) {
-                            console.log("PASSAGE EN MINEUR " + component.name);
+                            console.log(trans.partial_failure + component.name);
                             caller.updateComponent(component.component_id, 3, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
@@ -124,7 +128,7 @@ config.components.forEach((component, index) => {
                                 //console.log(eval('incident_'+component.component_id));
                             });
                         } else if (counter == (component.retries + 10)) {
-                            console.log("PASSAGE EN MAJEUR " + component.name);
+                            console.log(trans.major_outage + component.name);
                             caller.updateComponent(component.component_id, 4, (response) => {
                                 console.log('PASSAGE EFFECTUER');
                             });
@@ -132,7 +136,7 @@ config.components.forEach((component, index) => {
                                 /* caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
                                     console.log("PASSED UPDATE INCIDENT ");
                                  });*/
-                                caller.createIncidentUpdate(IsIncident, 2, "Panne Majeur", (response) => {
+                                caller.createIncidentUpdate(IsIncident, 2, trans.major_outage, (response) => {
                                     console.log("PASSED UPDATE INCIDENT ");
                                 });
                             } else {
@@ -145,7 +149,7 @@ config.components.forEach((component, index) => {
                     } else {
                         counter = 0;
                         if (IsIncident !== undefined) {
-                            caller.createIncidentUpdate(IsIncident,4,"Corrigé", (response) => {
+                            caller.createIncidentUpdate(IsIncident,4,trans.resolved, (response) => {
                                 console.log("UPDATE INCIDENT to RESOLVED");
                                 eval('incident_'+component.component_id+' = undefined;');
                             });
@@ -159,7 +163,7 @@ config.components.forEach((component, index) => {
                 .then(time => {
                     counter = 0;
                     if (IsIncident !== undefined) {
-                        caller.createIncidentUpdate(IsIncident,4,"Corrigé", (response) => {
+                        caller.createIncidentUpdate(IsIncident,4,trans.resolved, (response) => {
                             console.log("UPDATE INCIDENT to RESOLVED");
                             eval('incident_'+component.component_id+' = undefined;');
                         });
@@ -167,12 +171,12 @@ config.components.forEach((component, index) => {
                 })
                 .catch(() => {
                     if (counter == component.retries) {
-                        console.log("PASSAGE EN PERF " + component.name);
+                        console.log(trans.performance_problem + component.name);
                         caller.updateComponent(component.component_id, 2, (response) => {
                             console.log('PASSAGE EFFECTUER');
                         });
                     } else if (counter == (component.retries + 5)) {
-                        console.log("PASSAGE EN MINEUR " + component.name);
+                        console.log(trans.partial_failure + component.name);
                         caller.updateComponent(component.component_id, 3, (response) => {
                             console.log('PASSAGE EFFECTUER');
                         });
@@ -182,7 +186,7 @@ config.components.forEach((component, index) => {
                             //console.log(eval('incident_'+component.component_id));
                         });
                     } else if (counter == (component.retries + 10)) {
-                        console.log ("PASSAGE EN MAJEUR "+ component.name);
+                        console.log (trans.major_outage + component.name);
                         caller.updateComponent(component.component_id, 4, (response) => {
                             console.log('PASSAGE EFFECTUER');
                         });
@@ -190,7 +194,7 @@ config.components.forEach((component, index) => {
                             /* caller.updateIncident(isIncident,2,"Panne majeur",component.component_id,4, (response) => {
                                 console.log("PASSED UPDATE INCIDENT ");
                              });*/
-                            caller.createIncidentUpdate(IsIncident,2,"Panne Majeur", (response) => {
+                            caller.createIncidentUpdate(IsIncident,2,trans.major_outage, (response) => {
                                 console.log("PASSED UPDATE INCIDENT ");
                             });
                         } else {
